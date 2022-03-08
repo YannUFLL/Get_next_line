@@ -6,13 +6,13 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 21:29:05 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/03/08 23:41:40 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/03/09 00:10:00 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-t_list	*ft_stock(int fd) 
+t_list:*ft_stock(int fd) 
 {
 	char *str;
 	static t_list list; 
@@ -48,8 +48,11 @@ int	ft_verify(char *tab)
 
 char *get_next_line(int fd)
 {
-	static t_list list; 
-	while (ft_verif(t_list == -1))
+	static *str;
+
+	str = malloc(sizeof(char) * 10000000);
+
+	while (ft_verif(str))
 	{
 		list = ft_stock(int fd); 
 		if (list == NULL)
