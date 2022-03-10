@@ -6,7 +6,7 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 14:29:00 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/03/10 18:24:08 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/03/10 21:24:21 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	ft_strchr(const char *s, int c)
 	int	i;
 
 	i = 0;
+	if (s == NULL)
+		return (-1);
 	while (s[i])
 	{
 		if ((unsigned char)s[i] == (unsigned char)c)
@@ -37,7 +39,7 @@ int	ft_strchr(const char *s, int c)
 	return (-1);
 }
 
-char	*ft_strjoin_andfreeS2(char const *s1, char const *s2)
+char	*ft_strjoin_andfreeS2(char const *s1, char *s2)
 {
 	char	*ptr;
 	size_t	size;

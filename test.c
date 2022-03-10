@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 10:14:00 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/03/10 18:37:16 by ydumaine         ###   ########.fr       */
+/*   Created: 2022/03/10 21:30:53 by ydumaine          #+#    #+#             */
+/*   Updated: 2022/03/10 21:34:29 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef		GET_NEXT_LINE_H
-# define	GET_NEXT_LINE_H
 
-# include <unistd.h>
-# include <stdlib.h>
-
-char *get_next_line(int fd);
-char *ft_extract_line(char *str_save);
-char *ft_update_save(char *str_save);
-size_t	ft_strlen(const char *s);
-int	ft_strchr(const char *s, int c);
-char	*ft_strjoin_andfreeS2(char const *s1, char *s2);
-size_t	ft_strlcpy(char *dst, char *src, size_t dstsize);
-
-#endif
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <stdio.h>
+int	main()
+{
+	int	fd;
+	int	i;
+	char str[10000];
+	fd = open("test.txt", O_RDONLY);
+	i = read(fd, str, BUFFER_SIZE);
+	printf("\n valeur de str : %s", str);
+	printf("\n valeur de read : %d", i);
+}
