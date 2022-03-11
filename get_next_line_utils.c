@@ -6,17 +6,19 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 14:29:00 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/03/10 21:24:21 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:07:36 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
+#include <stdio.h>
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
 	i = 0;
+	if (s == NULL)
+		return (0);
 	while (s[i++])
 		;
 	return (i - 1);
@@ -44,7 +46,7 @@ char	*ft_strjoin_andfreeS2(char const *s1, char *s2)
 	char	*ptr;
 	size_t	size;
 	int		i;
-
+	
 	size = ft_strlen(s1);
 	size = size + ft_strlen(s2);
 	ptr = malloc(sizeof(char) * (size + 1));
@@ -58,13 +60,17 @@ char	*ft_strjoin_andfreeS2(char const *s1, char *s2)
 	}
 	size = i;
 	i = 0;
-	while (s2[i])
+	if (s2 != NULL)
 	{
-		ptr[size + i] = s2[i];
-		i++;
+		while (s2[i])
+		{
+			ptr[size + i] = s2[i];
+			i++;
+		}
 	}
 	free(s2);
 	ptr[size + i] = 0;
+	printf("\n valeur de string dans fonction : %s", ptr); 
 	return (ptr);
 }
 
@@ -74,6 +80,8 @@ size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
 	size_t	length;
 
 	length = 0;
+	if (dst == NULL || src == NULL)
+		return (0);
 	while (src[length] != '\0')
 		length++;
 	i = 0;

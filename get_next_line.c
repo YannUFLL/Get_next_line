@@ -6,7 +6,7 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:01:48 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/03/10 21:49:24 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:04:54 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ char *get_next_line(int fd)
 	str_save = NULL; 
 	str_line = NULL;
 	printf("OK");
+	control = BUFFER_SIZE;
 	while (ft_strchr(str_save, 10) == -1 && control == BUFFER_SIZE)
 	{
 		str_line = malloc(sizeof(char) * (BUFFER_SIZE + 1));
@@ -30,9 +31,11 @@ char *get_next_line(int fd)
 			return (NULL);
 		control = read(fd, str_line, BUFFER_SIZE);
 		str_line[control] = 0; 
-		printf("valeur de control : %d ", control);
-		printf("str_line : %s ", str_line);
+		printf("\nvaleur de control : %d ", control);
+		printf("\nstr_line : %s ", str_line);
 		str_save = ft_strjoin_andfreeS2(str_line, str_save);
+		printf("\nstr_save : %s ", str_line);
+		free(str_line);
 	}
 	str_line = ft_extract_line(str_save);
 	str_save = ft_update_save(str_save);
@@ -78,5 +81,5 @@ int	main()
 	char *str;
 	fd = open("test.txt", O_RDONLY);
 	str = get_next_line(fd);
-	printf("\n valeur de line : %s", str);
+	printf("\n valeur de line finale : %s", str);
 }
