@@ -6,7 +6,7 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 14:29:00 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/03/11 15:07:36 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/03/12 03:00:06 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_strchr(const char *s, int c)
 	return (-1);
 }
 
-char	*ft_strjoin_andfreeS2(char const *s1, char *s2)
+char	*ft_strjoin_andfreeS2(char *s1, char const *s2)
 {
 	char	*ptr;
 	size_t	size;
@@ -53,10 +53,13 @@ char	*ft_strjoin_andfreeS2(char const *s1, char *s2)
 	if (ptr == NULL)
 		return (0);
 	i = 0;
-	while (s1[i])
+	if (s1 != NULL)
 	{
-		ptr[i] = s1[i];
-		i++;
+		while (s1[i])
+		{
+			ptr[i] = s1[i];
+			i++;
+		}
 	}
 	size = i;
 	i = 0;
@@ -68,9 +71,8 @@ char	*ft_strjoin_andfreeS2(char const *s1, char *s2)
 			i++;
 		}
 	}
-	free(s2);
+	free(s1);
 	ptr[size + i] = 0;
-	printf("\n valeur de string dans fonction : %s", ptr); 
 	return (ptr);
 }
 
