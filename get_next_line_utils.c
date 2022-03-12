@@ -6,12 +6,12 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 14:29:00 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/03/12 03:00:06 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/03/12 16:40:54 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
+
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
@@ -23,6 +23,7 @@ size_t	ft_strlen(const char *s)
 		;
 	return (i - 1);
 }
+
 int	ft_strchr(const char *s, int c)
 {
 	int	i;
@@ -41,35 +42,29 @@ int	ft_strchr(const char *s, int c)
 	return (-1);
 }
 
-char	*ft_strjoin_andfreeS2(char *s1, char const *s2)
+char	*ft_strjoin_andfree_s2(char *s1, char const *s2)
 {
 	char	*ptr;
 	size_t	size;
 	int		i;
-	
-	size = ft_strlen(s1);
-	size = size + ft_strlen(s2);
+	int		j;
+
+	size = ft_strlen(s1) + ft_strlen(s2);
 	ptr = malloc(sizeof(char) * (size + 1));
 	if (ptr == NULL)
 		return (0);
 	i = 0;
+	j = 0;
 	if (s1 != NULL)
 	{
 		while (s1[i])
-		{
-			ptr[i] = s1[i];
-			i++;
-		}
+			ptr[j++] = s1[i++];
 	}
-	size = i;
 	i = 0;
 	if (s2 != NULL)
 	{
 		while (s2[i])
-		{
-			ptr[size + i] = s2[i];
-			i++;
-		}
+			ptr[j++] = s2[i++];
 	}
 	free(s1);
 	ptr[size + i] = 0;
@@ -98,5 +93,3 @@ size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
 		dst[i] = '\0';
 	return (length);
 }
-
-
