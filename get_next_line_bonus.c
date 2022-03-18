@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:01:48 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/03/18 18:47:40 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/03/18 20:04:27 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 char	*get_next_line(int fd)
 {
-	static char		*str_save[1000];
+	static char		*str_save[1025];
 	char			*str_line;
 	int				control;
 
 	str_line = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 999)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1024)
 		return (NULL);
 	control = BUFFER_SIZE;
 	while (ft_strchr(str_save[fd], 10) == -1 && control == BUFFER_SIZE)
@@ -81,56 +80,4 @@ char	*ft_update_save(char *str_save)
 	ft_strlcpy(ptr, &str_save[i + 1], (j - (i + 1) + 1));
 	free(str_save);
 	return (ptr);
-}
-
-#include <fcntl.h>
-int	main()
-{
-	int	fd;
-	int fd2;
-	int fd3;
-	int	i;
-
-	i = 0;
-	char *str;
-	fd = open("test.txt", O_RDONLY);
-	fd2 = open("test2.txt", O_RDONLY);
-	fd3 = open("test3.txt", O_RDONLY);
-	printf("\nvaleur fd test : %d", fd);
-	printf("\nvaleur fd test2 : %d", fd2);
-	printf("\nvaleur fd test3 : %d", fd3);
-	while (i < 2)
-	{
-		str = get_next_line(fd);
-		printf("\nvaleur ligne renvoye : %s", str);
-		i++;
-	}
-	i = 0;
-	while (i < 2)
-	{
-		str = get_next_line(fd2);
-		printf("\nvaleur ligne renvoye : %s", str);
-		i++;
-	}
-	i = 0;
-	while (i < 10)
-	{
-		str = get_next_line(fd3);
-		printf("\nvaleur ligne renvoye : %s", str);
-		i++;
-	}
-	i = 0;
-	while (i < 2)
-	{
-		str = get_next_line(fd);
-		printf("\nvaleur ligne renvoye : %s", str);
-		i++;
-	}
-	i = 0;
-	while (i < 2)
-	{
-		str = get_next_line(fd2);
-		printf("\nvaleur ligne renvoye : %s", str);
-		i++;
-	}
 }

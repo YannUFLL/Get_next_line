@@ -6,12 +6,11 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:01:48 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/03/18 16:02:00 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/03/18 20:08:36 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 char	*get_next_line(int fd)
 {
@@ -20,7 +19,7 @@ char	*get_next_line(int fd)
 	int				control;
 
 	str_line = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1024)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	control = BUFFER_SIZE;
 	while (ft_strchr(str_save, 10) == -1 && control == BUFFER_SIZE)
