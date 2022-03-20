@@ -6,11 +6,11 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:01:48 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/03/18 20:04:27 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/03/20 16:26:05 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {

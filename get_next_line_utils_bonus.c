@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 14:29:00 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/03/18 14:22:36 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/03/20 16:28:30 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include <stdio.h>
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -97,7 +96,7 @@ size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
 
 int	ft_check_endfile(char *str_line, int control)
 {
-	if (control == 0)
+	if (control == 0 || control < 0)
 	{
 		free(str_line);
 		return (1);
